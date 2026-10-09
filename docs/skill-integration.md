@@ -8,13 +8,15 @@
 
 [Extension 清单](../extensions/team-sdlc/extension.yml)声明五个原生命令：日常默认 start，其余是兼容路径建议，由 Spec Kit 对当前 integration 注册：
 
-| 原生命令 | generic Skills 输出 | 行为 |
+| 原生命令（保持原样） | 对外入口 Skill（本仓库 skills/ 提供） | 行为 |
 |---|---|---|
-| speckit.team-sdlc.start | speckit-team-sdlc-start/SKILL.md | 无需预先评级，工程风险评估后走 L0～L3 路径 |
-| speckit.team-sdlc.l0 | speckit-team-sdlc-l0/SKILL.md | Mini-Spec 确认后最小修复/验证 |
-| speckit.team-sdlc.l1 | speckit-team-sdlc-l1/SKILL.md | Spec/AC 确认后自动规划、编码、测试 |
-| speckit.team-sdlc.l2 | speckit-team-sdlc-l2/SKILL.md | 增加技术方案确认和影响面验证 |
-| speckit.team-sdlc.l3 | speckit-team-sdlc-l3/SKILL.md | 已批准且合入 Spec 基线后开展实现 MR |
+| speckit.team-sdlc.start | eden-team-speckit-start/SKILL.md | 无需预先评级，工程风险评估后走 L0～L3 路径 |
+| speckit.team-sdlc.l0 | eden-team-speckit-l0/SKILL.md | Mini-Spec 确认后最小修复/验证 |
+| speckit.team-sdlc.l1 | eden-team-speckit-l1/SKILL.md | Spec/AC 确认后自动规划、编码、测试 |
+| speckit.team-sdlc.l2 | eden-team-speckit-l2/SKILL.md | 增加技术方案确认和影响面验证 |
+| speckit.team-sdlc.l3 | eden-team-speckit-l3/SKILL.md | 已批准且合入 Spec 基线后开展实现 MR |
+
+对外入口统一采用 eden-team-speckit-start / l0～l3，源文件见 [skills/](../skills)。它们只读取业务仓库安装内的 commands/{mode}.md 并执行，继续使用原有共享规则。Spec Kit 原生注册/生成名称、Extension 清单与版本、命令文件和执行流程保持原样，不增命令别名、不改上游生成器。
 
 命令源只指定输入模式，五个入口共用[执行约定](../extensions/team-sdlc/references/flow.md)。Specify/Clarify/Plan/Tasks/Analyze/Implement/Converge 继续使用工程实际安装并生效的原生指令；没有复制原生引擎或模板。
 
@@ -34,9 +36,13 @@ specify init /path/to/new-sandbox --integration generic \
 cd /path/to/new-sandbox
 specify extension add /path/to/agent-native-sdlc/extensions/team-sdlc --dev
 specify extension info team-sdlc --json
+# 仅限本节刚初始化的新样例，五个目标目录尚不存在：
+cp -R /path/to/agent-native-sdlc/skills/eden-team-speckit-* .agents/skills/
 ```
 
-这是官方本地开发安装方式，当前没有发布可用的扩展 URL/目录或 Bundle。验证期间保留标准仓库源目录，不把开发安装称作已经完成正式安装/升级策略。
+最后一步只是复制团队薄 Skill。目标使用实际客户端已验证的项目 Skills 目录，本例为 .agents/skills；目录已存在时先比较版本与本地修改，不直接覆盖。原生生成的 speckit-team-sdlc-* 内部入口保留，开发者选择 eden-team-speckit-* 对外入口。
+
+Extension 的 add/info 是官方本地开发安装方式，当前没有发布可用的扩展 URL/目录或 Bundle。验证期间保留标准仓库源目录，不把开发安装称作已经完成正式安装/升级策略。
 
 既有业务工程先检查是否已初始化、当前 integration/模板覆盖与未提交修改；在隔离分支/副本审查 diff 后接入，不直接在原工程套用 init 或 --force。
 
@@ -45,7 +51,7 @@ specify extension info team-sdlc --json
 ## 3. 必须保留的依赖
 
 - 当前 integration 下的统一入口、四个兼容入口及原生 Spec Kit 指令。
-- `.specify/extensions/team-sdlc/references/` 与 `scripts/`，由原生安装复制管理。
+- 薄 Skill 读取的 `.specify/extensions/team-sdlc/commands/`，以及 `references/` 与 `scripts/`，由原生安装复制管理。
 - `.specify/` 原有模板/脚本/Constitution，以及工程规范和真实构建入口。
 
 不能只复制五个 SKILL.md 就宣布安装完成。入口会读取业务仓库内的共享规则；App 若把导入包隔离到其他位置，必须验证能否正确读取工程文件，必要时再做薄适配。
@@ -73,12 +79,14 @@ Spec Kit 1.1.2 的 Workflow command 步骤通过 integration CLI 派发。个人
 
 已验证原生安装、五入口注册、Skills/命令文件两种布局、共享资源/检查器随包安装、移除不改既有核心文件与历史 Spec，以及检查器原有失败条件。详情见[核验记录](research/native-capability-audit.md)。未验证真实模型驱动的需求到交付、客户端 UI、内部 GitLab 和 Spring Boot 工程。
 
+五个对外薄 Skill 源文件均通过 skill-creator 的严格格式检查；这不代表实际模型/客户端执行成功。
+
 skill-creator 的严格 quick_validate 不接受上游生成的 compatibility 字段；原样校验会失败。0.1.0 时只对由四个命令源生成的最小 Skill 校验副本验证 name/description/body（通过），没有改写原生受管文件，也不把副本通过称为客户端兼容。
 
 上游 generic renderer 固定生成 metadata.author=github-spec-kit；它不是本扩展作者或官方背书。实际扩展清单 author 为 team-sdlc contributors，source 为 extension:team-sdlc。不要依赖该 renderer 默认值判定归属。
 
 ## 7. 回退与后续分发
 
-先保留工程 Git 快照；不再试点时通过原生 `specify extension remove team-sdlc` 移除，并审查 diff。仅承诺本次隔离测试范围内的核心/历史文件保护，不保证升级原子性。不要手工删除整个 .specify/。
+先保留工程 Git 快照；不再试点时通过原生 `specify extension remove team-sdlc` 移除，并审查 diff。手工复制的五个 eden-team-speckit-* 薄 Skill 不归原生安装器管理；停止使用时，维护者应核对具体目录、归属与本地修改后单独移除，保留其他 Skills，不使用通配删除。仅承诺本次隔离测试范围内的核心/历史文件保护，不保证升级原子性。不要手工删除整个 .specify/。
 
 行为验证通过后再决定稳定版本、许可证与发布来源，未来由官方 Bundle 组合本扩展和确有必要的 Preset/Workflow。当前不追加自建启动器、审批服务或 CI 服务。

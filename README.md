@@ -8,15 +8,15 @@
 
 ## 开发同学从这里开始
 
-先读 [开发者使用说明：提交需求，让 Agent 推进 L0～L3 工作流](docs/developer-guide.md)。调用统一 Skill `speckit-team-sdlc-start`，提供需求文档或功能变化描述，无需预先评级；Agent 先依据工程评估风险，再起草相应 Spec/AC，在关键确认后继续规划、编码和测试；开发者核对准确性与最终功能。
+先读 [开发者使用说明：提交需求，让 Agent 推进 L0～L3 工作流](docs/developer-guide.md)。调用统一 Skill `eden-team-speckit-start`，提供需求文档或功能变化描述，无需预先评级；Agent 先依据工程评估风险，再起草相应 Spec/AC，在关键确认后继续规划、编码和测试；开发者核对准确性与最终功能。
 
-维护者按 [Spec Kit 与 Skill 接入说明](docs/skill-integration.md)完成一次接入。已实现原生 [team-sdlc Extension](extensions/team-sdlc/extension.yml)，可注册一个默认统一入口和四个兼容入口；所有入口都必须评估风险；两个真实客户端的行为仍待验证。
+维护者按 [Spec Kit 与 Skill 接入说明](docs/skill-integration.md)完成一次接入。已实现原生 [team-sdlc Extension](extensions/team-sdlc/extension.yml)，原生注册保持原样；对外使用 [skills/ 下的五个薄入口](skills)，统一为 eden-team-speckit-start / l0～l3；所有入口都必须评估风险；两个真实客户端的行为仍待验证。
 
 日常速查：L0 Mini-Spec + 单 MR；L1 单 MR 先确认 Spec/AC；L2 单 MR 再确认技术方案；L3 Spec MR + 实现 MR。所有等级都保留实际验证与最终人工审核。
 
 ## 一次任务怎样推进
 
-工程完成首次接入后，开发者调用 `speckit-team-sdlc-start`，提供需求文档或功能变化描述，无需先选择 L0～L3。入口由当前 Agent 会话执行，下面是约定的执行过程；实际客户端端到端行为仍待验证。
+工程完成首次接入后，开发者调用 `eden-team-speckit-start`，提供需求文档或功能变化描述，无需先选择 L0～L3。入口由当前 Agent 会话执行，下面是约定的执行过程；实际客户端端到端行为仍待验证。
 
 | 阶段 | Agent 做什么 | 人工参与与交付物 |
 |---|---|---|
@@ -50,7 +50,7 @@ flowchart LR
     end
     subgraph wrapped["团队封装：一次输入，关键节点确认"]
         direction TB
-        B1["开发者：调用统一 start 入口<br/>提供需求文档或变化描述"]
+        B1["开发者：调用 eden-team-speckit-start<br/>提供需求文档或变化描述"]
         B2["Agent：调查工程、评估风险<br/>起草 Spec / AC / 所需方案"]
         B3["对应负责人：确认等级、内容和版本<br/>不准确则修订后再确认"]
         B4["Agent：衔接原生能力<br/>规划 → 编码 → 收敛 → 实际测试"]
