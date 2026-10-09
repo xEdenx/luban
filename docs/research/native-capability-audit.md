@@ -34,6 +34,7 @@
 | team-sdlc Extension 0.1.1 | 安装/注册 pass | 原生安装注册统一 start 与四级兼容入口，共享参考与检查器随包复制；不是会话行为通过 |
 | generic Skills / 命令文件 | 安装/移除 pass | 两种布局均注册五入口，移除后核心文件和历史 Spec 保持不变 |
 | 官方 speckit CLI Workflow + generic | 预期受限 | 实际 specify 第一步 failed，无法 CLI 派发；本版用当前 Agent 会话衔接 |
+| team-baseline Preset 0.1.0 | 安装/模板生成 pass | generic 两种布局下，原生 Python 脚本保留底层模板并追加字段；项目 override 优先，移除保护原文件；模型消费与内部 playbook 未验证 |
 
 ## 3. 安装问题与结论
 
@@ -122,3 +123,17 @@ generic 生成的 taskstoissues 属于 GitHub Issue 同步方向，第一版内�
 修改后重跑两个原生生命周期测试，通过：generic Skills 与命令文件均安装五入口，资源与检查器随包完整，移除保护核心文件/历史 Spec，安装内脚本仍可读取虚构报告。检查器实现未变，本次未重复原有 24 个测试；此前通过记录继续作为既有证据。
 
 风险识别、拒绝低级入口绕过、升降级确认和复评均是新 Skill 行为规则，尚未通过实际模型/客户端验证。对应新增 V2-09～V2-14；不能把安装测试称为评级准确或软件强制门禁。start 命令源的最小 Skill 校验副本通过严格格式校验；上游原样生成产物的 compatibility 字段问题仍保持前述限制。
+
+## 最小团队 Preset 与 playbook 接入准备
+
+2026-10-10：用户同意先核验最小 Preset，并说明现有 spec coding playbook 位于工作电脑，包含团队习惯和实现方式。当前未读取 playbook，不推定具体规则；工作电脑按[验证手册](../work-mac-validation.md#31-现有-playbook-与权威来源)接入，内部正文不回传公开仓库。
+
+[team-baseline 0.1.0](../../presets/team-baseline/README.md)锁定 Spec Kit 1.1.2，仅声明两个 `type: template`、`strategy: append` 贡献。使用原生 `preset add --dev <候选目录>` / `preset info team-baseline --json` / `preset remove team-baseline` 与安装内 Python `create_new_feature.py`、`setup_plan.py` 验证；未调用模型或实际业务代码。
+
+本轮 Python 3.14.8 运行 `python -m unittest discover -s tests -p 'test_team_*.py' -v` 的四项原生生命周期测试通过：原有两项 Extension 测试 + 新增两项 Preset 测试。覆盖 generic Skills/命令文件两种布局下安装、组合生成、核心模板/入口/Constitution/虚构 playbook/历史 Spec 的内容保护、移除后新模板回归底层、已生成文件保留；项目 override 优先，无效策略返回非零且未生成新 Spec。
+
+实际本地命令为 `TEAM_SDLC_SPECIFY="$PWD/work/run-specify" .venv/bin/python -m unittest discover -s tests -p 'test_team_*.py' -v`，日志在忽略的 work/team-preset-tests.log。目录改名使旧 .venv/bin/specify 解释器路径失效，本轮通过临时入口执行 `.venv/bin/python .venv/bin/specify`，实际版本输出仍为 specify 1.1.2；未修改全局环境或上游文件。新环境正常安装后可直接使用实际 specify 入口，不依赖此临时路径。
+
+`preset resolve` 展示最高层路径和组合链，不输出完整组合模板。`append` 的路径只是片段，消费者必须使用原生组合解析/生成能力。generic 不注册 Preset 命令/Skill 覆盖；本候选不提供这些覆盖。Lean 自包含命令和项目 override 的实际组合另验，模型填写、两客户端行为、内部 playbook 适配、受管环境与真实 Maven 测试仍未验证。
+
+固定来源：[Preset 清单与组合示例](https://github.com/github/spec-kit/blob/959e866caa3618bf3dc290d5dca33394365af9c6/presets/scaffold/preset.yml)、[Python 组合解析](https://github.com/github/spec-kit/blob/959e866caa3618bf3dc290d5dca33394365af9c6/scripts/python/common.py)、[CLI resolve 行为](https://github.com/github/spec-kit/blob/959e866caa3618bf3dc290d5dca33394365af9c6/src/specify_cli/presets/command_resolve.py)。

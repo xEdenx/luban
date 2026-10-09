@@ -105,6 +105,7 @@ flowchart LR
 - [ADR-0003](docs/adr/0003-maven-acceptance-prototype.md)：最小 Maven 验收原型的取舍与边界。
 - [ADR-0004](docs/adr/0004-native-task-entrypoints.md)：原生四级入口与会话衔接的实现选择。
 - [ADR-0005](docs/adr/0005-mixed-spec-lifecycle.md)：业务变更与全局约束的混合生命周期、权威来源及版本追溯。
+- [ADR-0006](docs/adr/0006-minimal-template-preset.md)与 [team-baseline Preset](presets/team-baseline/README.md)：最小追加模板候选及现有 playbook 接入边界。
 - [团队操作基线](docs/team-operating-profile.md)：已确认的审批路径、风险负责人及待批准细则。
 - [Maven 验收契约](docs/acceptance-contract.md)与[检查器操作说明](scripts/README.md)：最小映射、手动运行及限制。
 - [GitLab 手动验收路径](docs/gitlab-manual-verification.md)：无自动流水线时如何形成可复核证据。
@@ -124,4 +125,4 @@ flowchart LR
 
 ## 仓库边界
 
-已有 team-sdlc Extension 0.1.1 和 AC 映射/报告检查原型，复用原生能力并提供会话内衔接，不承担 CI 或审批服务。尚无团队 Preset、CLI Workflow 或 Bundle；先验证真实行为再标准化分发。work/ 与 .venv/ 为忽略的临时研究环境，不能当作正式分发物。
+已有 team-sdlc Extension 0.1.1 和 AC 映射/报告检查原型，复用原生能力并提供会话内衔接，不承担 CI 或审批服务。另有 [team-baseline Preset 0.1.0](presets/team-baseline/README.md)实验候选，原生安装与 Python 脚本组合生成已在个人电脑验证；内部 playbook 与真实客户端待验证。尚无团队 CLI Workflow 或 Bundle；先验证真实行为再标准化分发。work/ 与 .venv/ 为忽略的临时研究环境，不能当作正式分发物。

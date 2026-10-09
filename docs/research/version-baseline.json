@@ -201,6 +201,16 @@
         "generic-commands"
       ],
       "client_behavior": "unverified"
+    },
+    "team-baseline": {
+      "version": "0.1.0",
+      "kind": "preset",
+      "status": "experimental",
+      "tested_specify_version": "1.1.2",
+      "tested_layouts": ["generic-skills", "generic-commands"],
+      "tested_consumers": ["python-create-new-feature", "python-setup-plan"],
+      "client_behavior": "unverified",
+      "internal_playbook": "unread-work-machine-only"
     }
   }
 }

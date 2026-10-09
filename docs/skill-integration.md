@@ -1,6 +1,6 @@
 # 维护者：Spec Kit 统一入口与四级路径的接入与验证
 
-日期：2026-10-10。组件：team-sdlc Extension 0.1.1；当前只锁定并核验 Spec Kit 1.1.2。它是团队扩展，不是 GitHub/OpenAI 官方开发方法。公开发布的仓库地址与许可证尚未确定，清单未伪填这些信息。
+日期：2026-10-10。组件：team-sdlc Extension 0.1.1；当前只锁定并核验 Spec Kit 1.1.2。它是团队扩展，不是 GitHub/OpenAI 官方开发方法。通用源文件已在 GitHub public repo xEdenx/luban 分发，许可证仍待选择；Extension 清单未填许可证或正式组件下载来源。
 
 开发者日常只需[选择入口并提供需求](developer-guide.md)。本页是工程维护者的一次性接入和诊断说明，不要求每位开发者每项任务重做安装。
 
@@ -49,6 +49,8 @@ Extension 的 add/info 是官方本地开发安装方式，当前没有发布可
 若客户端只支持命令文件，可在另一空白样例把 integration-options 改为 `--commands-dir .agent-commands`，不带 --skills。安装后会生成 `speckit.team-sdlc.l1.md` 等文件。这也只是文件产物，仍须在真实客户端验证发现与执行。
 
 ## 3. 必须保留的依赖
+
+可选模板候选：[team-baseline Preset 0.1.0](../presets/team-baseline/README.md)，仅在隔离样例按其说明验证；不是运行五入口的前置依赖。它为原生 Spec/Plan 追加通用记录字段，不覆盖命令。`preset resolve` 只显示层与组合链，实际消费须使用原生组合解析/生成脚本；项目完整 override 优先，Lean 自包含命令未必读取模板。用户工作电脑上的 playbook 内容仍待核对，具体团队习惯留在内部来源，按[验证手册](work-mac-validation.md#31-现有-playbook-与权威来源)接入。
 
 - 当前 integration 下的统一入口、四个兼容入口及原生 Spec Kit 指令。
 - 薄 Skill 读取的 `.specify/extensions/team-sdlc/commands/`，以及 `references/` 与 `scripts/`，由原生安装复制管理。

@@ -83,11 +83,12 @@
 操作：
 
 1. 在隔离环境初始化，检查生成文件和归属，复用官方模板；评估 Lean 与 Bug 组件是否适合实际任务。
-2. 复用现有工程规范，必要时起草并人工确认最小 Constitution；在精简 AGENTS.md 中记录各类规则的权威路径、活跃变更入口、历史 Spec 边界、验证命令和重新确认规则。
+2. 在工作电脑读取现有 spec coding playbook，按[验证手册](work-mac-validation.md#31-现有-playbook-与权威来源)核对条款与权威来源；复用现有工程规范，必要时起草并人工确认最小 Constitution；在精简 AGENTS.md 中记录各类规则的权威路径、活跃变更入口、历史 Spec 边界、验证命令和重新确认规则。
 3. 用团队 L0 入口验证 Mini-Spec 与 Review；调用 L1 入口，提供需求文档/增量描述，由 Agent 实际完成原生 Spec → 人工确认 → Plan/Tasks → Implement → Converge → 测试流程，不要求人逐条调度。
 4. 人工补充真实业务规则并确认 AC；重要问题没有解决时保留暂停，不由 Agent 猜测为已批准。
 5. 在活跃变更中演示一次范围/AC 修订，重新确认并同步受影响的 Plan/Tasks；结束后冻结记录。
 6. 在批准的隔离案例中核对约束冲突时暂停、规则实质变化后复评，以及验收记录关联适用约束版本；分别记录模型行为与人工复核结果，不视为检查器自动门禁。
+7. 按需验证 [team-baseline 模板候选](../presets/team-baseline/README.md)在真实客户端下的消费；不改变原生注册或复制 playbook。项目 override/Lean 等组合另验，安装通过不等于 Agent 填写有效。
 
 验收：
 

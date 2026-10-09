@@ -1,0 +1,23 @@
+schema_version: "1.0"
+preset:
+  id: "team-baseline"
+  name: "Luban Team Baseline"
+  version: "0.1.0"
+  author: "team-sdlc contributors"
+  description: "为原生 Spec/Plan 追加团队接力字段，不覆盖原生命令或工程规则。"
+  repository: "https://github.com/xEdenx/luban"
+requires:
+  speckit_version: "==1.1.2"
+provides:
+  templates:
+    - type: "template"
+      name: "spec-template"
+      file: "templates/spec-addendum.md"
+      description: "追加工程依据、风险、约束版本与确认接力字段"
+      strategy: "append"
+    - type: "template"
+      name: "plan-template"
+      file: "templates/plan-addendum.md"
+      description: "追加规则符合性、影响复评与技术确认引用"
+      strategy: "append"
+tags: ["team", "traceability", "prototype"]

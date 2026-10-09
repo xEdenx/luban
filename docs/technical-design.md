@@ -1,6 +1,6 @@
 # Agent-Native Development 团队转型方案
 
-版本：0.6 · 决策基线与实施设计 · 2026-10-10（Asia/Shanghai）
+版本：0.7 · 决策基线与实施设计 · 2026-10-10（Asia/Shanghai）
 配套文件：[Codex 实施任务接力说明](implementation-handoff.md)
 所属项目：鲁班 · Luban，基于 Spec Kit 的团队 Agent 开发与验收工作流。
 
@@ -167,6 +167,8 @@ OpenAI 官方实践展示了仓库内 AGENTS.md、Skills 与 CI 的协作方式�
 | 进度、已验证事实及待办 | 项目 memory/交接记录 | 提供接力索引，不独立定义或覆盖规则 |
 
 在鲁班标准仓库中，本文是技术路线与生命周期设计的权威来源，[team-operating-profile.md](team-operating-profile.md)维护日常操作细则；AGENTS.md、共享入口参考及实施接力引用并落实它们，docs/memory.md 记录事实与进度。本仓库复用这些现有载体，不另增 Constitution 或第二份主设计；业务工程的实际 Constitution 路径在接入时确认。
+
+用户已有 spec coding playbook，包含团队习惯与实现方式，位于工作电脑，当前未读取。接入时先核对其版本、维护人、适用范围及强制/建议/历史描述，再明确各类规则的权威位置。长期规则复用原 playbook/规范，Constitution、AGENTS.md 与 Skills 按职责引用；可重复的文档格式按需进入内部 Preset，具体实现方式在 Plan 引用适用条款。不得将未读内容当作已适配，也不把内部 playbook 复制到公开仓库；冲突按下述规则裁决。
 
 单次 Spec/Plan/Tasks 或 Chat 修改不能隐式放宽已确认的全局约束。发现全局约束、长期设计、当前契约或本轮 Spec 相互冲突时，Agent 列出冲突条款与工程证据，暂停受影响的实施，由对应规则负责人裁决；不得按文件时间、文档名称或“代码已经这样写了”自行选边。历史 Spec、被取代的 ADR 与进度记录不能覆盖当前有效规则。
 
@@ -429,6 +431,8 @@ L2/L3 从试点起保留专项审批边界。L3 的生产发布与数据操作�
 官方 Bundle 是已有 extensions、presets、workflows、steps 的版本化组合与分发层，本身不增加新的运行时能力。[官方机制](https://github.com/github/spec-kit/blob/main/docs/reference/bundles.md)
 
 未来团队 Bundle 可组合官方 Bug 组件、团队最小 Preset、按风险组织的 Workflow，以及确有必要的 AC 检查 Extension。名称如 `backend-agent-native-sdlc` 只是内部候选，不是已存在的软件包。
+
+当前已准备 [team-baseline Preset 0.1.0](../presets/team-baseline/README.md)实验候选，通过原生 `append` 为 Spec/Plan 追加通用接力字段，不覆盖命令或全局规则；原生安装、Python 脚本组合生成与移除已在个人电脑验证。项目完整模板覆盖优先；generic 的 Preset 命令覆盖和 Lean 自包含指令不能视为模板有效消费，两个实际客户端与内部 playbook 仍待验证。该候选是分发前的原生机制探针，不表示 T6 完成。决策见 [ADR-0006](adr/0006-minimal-template-preset.md)。
 
 不要默认把任意 Skills、AGENTS.md、CI 文件或 Spec Kit Core 当作独立的 Bundle 组件类型。核验锁定版本的 schema、组件挂载与文件归属，使用受支持的承载方式；Core/CLI 作为基础依赖单独锁定。两种客户端的安装步骤按实际能力分别提供。
 

@@ -47,6 +47,8 @@
 
 优先使用安装后生效的原生指令，尊重 Preset 组合结果；不要抄写一套 Specify/Plan/Implement 模板。无法取得有效原生能力时报告 blocked，不假装已调用。对原生命令默认要求再次确认的步骤，可以用当前上下文中仍有效的具体人工确认满足；不能用无范围的“继续”替代尚未确认的业务内容。
 
+工程使用追加模板 Preset 时，通过已有原生组合解析或生成脚本取得完整模板；`preset resolve` 展示的最高层路径可能仅是片段，不可单独复制为 Spec/Plan。项目完整 override 优先，不能强行覆盖；现有工作说明按本约定补齐并引用权威规则。读取实际生效的 playbook/工程规范条款与版本，具体实现约束在 Plan 引用；缺少内容时保留待确认，不推测或上传内部文档。
+
 不使用 `specify workflow run` 加 generic 来假装驱动桌面 App。CLI Workflow 的 command 步骤需要实际支持的 CLI 派发；本入口由当前 Agent 会话衔接能力。不要调用 GitHub 专用 taskstoissues。
 
 ## 起草与确认
