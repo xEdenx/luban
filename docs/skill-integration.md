@@ -34,10 +34,10 @@ specify init /path/to/new-sandbox --integration generic \
   --integration-options='--commands-dir .agents/skills --skills' \
   --script py --non-interactive
 cd /path/to/new-sandbox
-specify extension add /path/to/agent-native-sdlc/extensions/team-sdlc --dev
+specify extension add /path/to/luban/extensions/team-sdlc --dev
 specify extension info team-sdlc --json
 # 仅限本节刚初始化的新样例，五个目标目录尚不存在：
-cp -R /path/to/agent-native-sdlc/skills/eden-team-speckit-* .agents/skills/
+cp -R /path/to/luban/skills/eden-team-speckit-* .agents/skills/
 ```
 
 最后一步只是复制团队薄 Skill。目标使用实际客户端已验证的项目 Skills 目录，本例为 .agents/skills；目录已存在时先比较版本与本地修改，不直接覆盖。原生生成的 speckit-team-sdlc-* 内部入口保留，开发者选择 eden-team-speckit-* 对外入口。

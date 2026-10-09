@@ -2,6 +2,7 @@
 
 版本：0.5 · 决策基线与实施设计 · 2026-10-10（Asia/Shanghai）
 配套文件：[Codex 实施任务接力说明](implementation-handoff.md)
+所属项目：鲁班 · Luban，基于 Spec Kit 的团队 Agent 开发与验收工作流。
 
 开发者日常操作见 [L0～L3 使用说明](developer-guide.md)；本文保留为单一主设计依据。
 

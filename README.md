@@ -1,10 +1,23 @@
-# Agent-Native SDLC
+# 鲁班 · Luban
 
-以 GitHub Spec Kit 原生能力为基础，采用 Flow-forward、L0–L3 与 AC-to-Test，逐步形成可推广的团队研发标准。
+**有规可循，有据可验。**
 
-当前：仓库已初始化，已完成部分原生能力核验和 Maven AC-to-Test 实验原型；尚未接入业务工程或完成两个客户端验证。
+鲁班是一套基于 GitHub Spec Kit 的团队 Agent 开发与验收工作流：开发者提供需求文档或功能变化描述，由 Agent 调查工程、评估风险、起草 Spec/AC，在关键人工确认后继续规划、编码和验证，最后完成功能核对与 Review。
 
-当前在个人电脑准备完整方案，后续公开 GitHub 分发通用材料，在受 MDM 管控的工作 MacBook 按手册验证。公开发布尚未执行。
+项目采用 Flow-forward 增量 Spec、L0–L3 风险分级和 AC-to-Test 可执行验收，尽量复用 Spec Kit 原生能力，以 AGENTS.md、团队入口 Skills 和现有交付流程补充团队约定。
+
+当前已完成部分原生能力核验和 Maven AC-to-Test 实验原型；Continue 自研 VS Code 插件、Qoder 独立 App 与真实业务工程的完整闭环仍待验证。
+
+本仓库通过 GitHub 分发通用方案、入口与虚构示例，供受 MDM 管控的工作电脑按允许渠道获取并验证。真实业务代码、Spec、审批与验收报告留在内部批准的位置。
+
+## 获取项目
+
+```sh
+git clone https://github.com/xEdenx/luban.git
+cd luban
+```
+
+也可以在仓库页面通过 Code → Download ZIP 获取。鲁班是团队标准仓库；在业务工程使用入口前，维护者先按 [接入说明](docs/skill-integration.md)安装依赖和五个团队 Skill，再由开发者提供业务需求。
 
 ## 开发同学从这里开始
 
