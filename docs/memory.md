@@ -10,6 +10,7 @@
 - 团队使用自部署 GitLab，无法自动触发 CI；手动 Pipeline、Runner、版本/许可和审批权限未知。
 - 客户端为 Continue 自研 VS Code 插件与 Qoder 独立 Coding Agent App；实际版本和加载能力未知。
 - 技术路线已明确：Spec Kit 1.x 原生优先、Flow-forward、L0–L3、AC-to-Test、AGENTS.md + Skills + CI、未来 Bundle。
+- 用户确认明确混合生命周期：业务变更沿用 Flow-forward；全局约束与长期设计按 Living Spec 思路持续维护，每类规则有唯一权威来源。修改全局约束先确认，冲突暂停相关实施并裁决，确认与验收关联适用的约束版本；ADR 保留历史，以新记录补充或取代。
 - 用户进一步确认 L1 单 MR 分阶段，先确认具体 Spec/AC 版本，再实现，最后审核；最终交付通常由另一位开发者审核，例外明确记录。
 - 用户确认 L2 单 MR 分阶段并确认技术方案；L3 Spec MR + 实现 MR。
 - 用户确认 L0/L1 模块负责人、L2/L3 技术负责人确认等级；降级需相应负责人留痕。Agent 推荐等级，发现新风险先停止相关实施。
@@ -43,6 +44,8 @@
 - 项目品牌确定为鲁班 · Luban，本地目录已改名 luban，README 补充项目定位与获取方式，接入示例路径同步。现有 eden-team-speckit-* Skill、Extension、Spec Kit 原生内容与执行规则不变；本次是命名与公开分发变更，无新架构决策。
 
 - GitHub public repo xEdenx/luban 已创建，首次推送完成；SSH 连接超时后仅将本仓库 origin 改为 HTTPS，使用已登录 gh 的凭证推送。已检查公开文件与既有 Git 历史，未发布 work/、.venv/ 或内部材料；LICENSE 仍待用户选择。
+
+- 主设计 0.6 第 4 节明确混合生命周期、权威来源、冲突处理及约束基线；新增 ADR-0005，保留 ADR-0001 历史正文，并同步 AGENTS.md、README、实施接力、操作基线、共享入口参考及验收模板。未改变原生注册、L0–L3/MR 路径、Extension 版本或检查器/schema。本轮 9 份 Markdown 的 62 个本地文件/标题链接及代码围栏检查通过，git diff --check 通过；客户端遵循、约束变更确认与团队执行仍未验证。
 
 ## 阶段状态
 

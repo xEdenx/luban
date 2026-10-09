@@ -5,6 +5,8 @@
 先读 README.md、docs/memory.md、docs/technical-design.md；实际实施按 docs/implementation-handoff.md。架构决策记录在 docs/adr/。
 
 - 继承 Spec Kit 1.x、Flow-forward、L0–L3、AC-to-Test、AGENTS.md + Skills + CI、后续官方 Bundle 的路线。
+- 按 docs/technical-design.md 第 4 节采用混合生命周期：业务变更 Flow-forward；全局约束与长期设计 Living Spec 式持续维护，每类规则只有一个权威来源。本仓库技术设计负责路线与生命周期，team-operating-profile.md 负责日常细则，memory.md 负责事实与进度；入口与 Skill 引用规则。ADR 保留历史，新决策明确补充或取代关系。
+- 本轮记录适用约束的路径与提交或可复核快照，验收关联同一基线。全局约束修改先由技术负责人及适用规则负责人确认，再同步受影响产物；冲突先暂停相关实施并裁决，恢复与交付前复核规则变化。不得用单次 Spec、Chat、代码或历史记录隐式覆盖全局约束；实质变化按影响重新确认与验证。
 - 优先官方原生能力，其次配置、薄适配，最后必要扩展。不复制原生 Spec 工作流，不建立中央编排器。
 - 用户需要开发者提供需求/增量描述后由 Agent 自动衔接原生步骤，仅在业务/技术确认与最终核对时交互。已实现 extensions/team-sdlc 统一入口与四级兼容路径；开发者无需预先评级，任何入口均强制基于工程证据按规则下限评估，负责人确认、实施复评和最终 Review 复核。维护入口源与共享参考，不另写四套 Spec 引擎，也不把人工操作清单当作已交付的调用入口。
 - 团队使用自部署 GitLab，当前无法自动触发 CI。第一版以人工运行现有验证命令、版本绑定的验收证据和人工合并审核闭环；不能声称已启用自动 CI 门禁。手动流水线、Runner 和审批功能待核验。

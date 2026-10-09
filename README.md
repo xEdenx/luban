@@ -4,7 +4,7 @@
 
 鲁班是一套基于 GitHub Spec Kit 的团队 Agent 开发与验收工作流：开发者提供需求文档或功能变化描述，由 Agent 调查工程、评估风险、起草 Spec/AC，在关键人工确认后继续规划、编码和验证，最后完成功能核对与 Review。
 
-项目采用 Flow-forward 增量 Spec、L0–L3 风险分级和 AC-to-Test 可执行验收，尽量复用 Spec Kit 原生能力，以 AGENTS.md、团队入口 Skills 和现有交付流程补充团队约定。
+项目采用 Flow-forward 增量 Spec、L0–L3 风险分级和 AC-to-Test 可执行验收，尽量复用 Spec Kit 原生能力，以 AGENTS.md、团队入口 Skills 和现有交付流程补充团队约定。业务变更完成后保留历史；全局约束与长期设计按 Living Spec 思路持续维护，每类规则有唯一权威来源，确认与验收关联适用版本，详见[混合生命周期](docs/technical-design.md#4-混合生命周期flow-forward-与-living-spec)。
 
 当前已完成部分原生能力核验和 Maven AC-to-Test 实验原型；Continue 自研 VS Code 插件、Qoder 独立 App 与真实业务工程的完整闭环仍待验证。
 
@@ -104,6 +104,7 @@ flowchart LR
 - [ADR-0002](docs/adr/0002-gitlab-manual-verification.md)：无自动 CI 触发时的第一版交付路径。
 - [ADR-0003](docs/adr/0003-maven-acceptance-prototype.md)：最小 Maven 验收原型的取舍与边界。
 - [ADR-0004](docs/adr/0004-native-task-entrypoints.md)：原生四级入口与会话衔接的实现选择。
+- [ADR-0005](docs/adr/0005-mixed-spec-lifecycle.md)：业务变更与全局约束的混合生命周期、权威来源及版本追溯。
 - [团队操作基线](docs/team-operating-profile.md)：已确认的审批路径、风险负责人及待批准细则。
 - [Maven 验收契约](docs/acceptance-contract.md)与[检查器操作说明](scripts/README.md)：最小映射、手动运行及限制。
 - [GitLab 手动验收路径](docs/gitlab-manual-verification.md)：无自动流水线时如何形成可复核证据。
