@@ -91,7 +91,7 @@
 
 ### 当前入口实现
 
-用户已澄清目标交互：提供需求文档或功能变化描述后，Agent 自动生成符合原生结构的增量 Spec/AC，等待必要人工确认，再继续规划、编码、Converge 和实际测试；开发者不逐条调用原生命令。现有 [team-sdlc Extension 0.1.1](../extensions/team-sdlc/extension.yml)注册一个默认统一入口和四个兼容入口，共享会话执行约定并随包安装验收检查器。开发者无需预先评级；各入口均需检查工程证据、按规则下限推荐等级，并由对应负责人确认。
+用户已澄清目标交互：提供需求文档或功能变化描述后，Agent 自动生成符合原生结构的增量 Spec/AC，等待必要人工确认，再继续规划、编码、Converge 和实际测试；开发者不逐条调用原生命令。现有 [team-sdlc Extension 0.1.1](../extensions/team-sdlc/extension.yml)注册一个默认统一入口和四个兼容入口，共享会话执行约定并随包安装验收检查器。开发者无需预先评级；各入口均需检查工程证据、按规则下限推荐等级，并由对应负责人确认。面向首次阅读者的七阶段流程与原生逐步使用对比图集中在 [README](../README.md#一次任务怎样推进)，操作细节以开发者指南为准。
 
 个人电脑已验证原生安装与注册，尚未验证两个客户端中的模型行为。Spec Kit 1.1.2 的 CLI Workflow command 步骤需要可派发的 Agent CLI，generic 实测无法派发；本版采用当前 Agent 会话衔接原生指令，保留将来使用原生 Workflow/overlay 的路径，不自建编排器。详见 [接入说明](skill-integration.md)和 [ADR-0004](adr/0004-native-task-entrypoints.md)。
 
