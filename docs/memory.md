@@ -4,8 +4,8 @@
 
 ## 已确认事实
 
-- 用户要求在 coding 目录创建独立文件夹并 git init；本仓库已初始化为 main；用户现已明确要求本地目录改名为 luban，并创建同名 GitHub public repo 后推送。
-- 用户要求先提交当前基线，再补开发同学能直接使用的 L0～L3 操作说明。基线已提交为 e67905e，指南及入口同步单独提交；当前正按用户后续授权准备首次公开发布。
+- 用户要求在 coding 目录创建独立文件夹并 git init；本地项目目录已改为 luban，分支 main；已按用户授权创建并推送到 GitHub public repo [xEdenx/luban](https://github.com/xEdenx/luban)。
+- 用户要求先提交当前基线，再补开发同学能直接使用的 L0～L3 操作说明。基线已提交为 e67905e，指南及入口同步单独提交；已按用户后续授权完成首次公开发布。
 - 当前在个人电脑讨论、准备材料；未来 GitHub public repo 分发，受 MDM 管控的工作 MacBook 验证。
 - 团队使用自部署 GitLab，无法自动触发 CI；手动 Pipeline、Runner、版本/许可和审批权限未知。
 - 客户端为 Continue 自研 VS Code 插件与 Qoder 独立 Coding Agent App；实际版本和加载能力未知。
@@ -42,6 +42,8 @@
 
 - 项目品牌确定为鲁班 · Luban，本地目录已改名 luban，README 补充项目定位与获取方式，接入示例路径同步。现有 eden-team-speckit-* Skill、Extension、Spec Kit 原生内容与执行规则不变；本次是命名与公开分发变更，无新架构决策。
 
+- GitHub public repo xEdenx/luban 已创建，首次推送完成；SSH 连接超时后仅将本仓库 origin 改为 HTTPS，使用已登录 gh 的凭证推送。已检查公开文件与既有 Git 历史，未发布 work/、.venv/ 或内部材料；LICENSE 仍待用户选择。
+
 ## 阶段状态
 
 | 阶段 | 状态 | 剩余内容 |
@@ -62,7 +64,7 @@
 
 1. 维护可调用入口与开发者指南，真实客户端按“输入 → 起草 → 修订/确认 → 自动实施 → 功能核对”验证；不再把开发者逐条操作清单当成最终产品。
 2. 工作电脑先自检检查器，再核验真实 POM/JUnit/报告布局、两个客户端、GitLab 记录/权限和真实业务 AC；必要时最小调整原型，不另建测试平台。
-3. 维护公开准备检查，确定发布账号/仓库名/许可证后再发布。
+3. 继续维护公开内容边界与版本记录；仓库账号/名称已确定并公开，LICENSE 尚待选择，内部业务验证结果不回传公开仓库。
 4. 工作电脑按 work-mac-validation.md 收集事实并逐项验证，内部结果不回传公开仓库。
 
 ## 验证材料

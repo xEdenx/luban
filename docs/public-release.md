@@ -1,6 +1,6 @@
 # 公开发布与工作电脑迁移
 
-状态：用户已授权以鲁班 · Luban 为项目名，将本地目录改为 luban，并在当前 GitHub 账号 xEdenx 下创建同名 public repo 后推送。正在完成发布前审查。
+状态：通用材料已按用户授权公开发布到 [xEdenx/luban](https://github.com/xEdenx/luban)，仓库可见性为 public，默认分支为 main；本地项目目录名为 luban。真实客户端、内部 GitLab 和业务工程验证仍待工作环境完成。
 
 ## 1. 公开仓库的职责
 
