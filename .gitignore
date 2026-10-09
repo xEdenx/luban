@@ -1,0 +1,13 @@
+.DS_Store
+.venv/
+work/
+__pycache__/
+*.pyc
+private/
+local-results/
+*.local.md
+*.local.json
+*.local.yaml
+*.local.yml
+.env
+.env.*

@@ -1,0 +1,19 @@
+schema_version: "1.0"
+workflow:
+  id: local-gate-probe
+  name: Local Gate Probe
+  version: "0.1.0"
+inputs:
+  decision:
+    type: string
+    default: ""
+steps:
+  - id: review
+    type: gate
+    message: "Synthetic local probe; no business approval is represented."
+    options: [approve, reject]
+    on_reject: abort
+    verdict_input: decision
+  - id: marker
+    type: shell
+    run: "echo gate-probe-completed"

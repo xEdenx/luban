@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic fixture only: not produced by Maven or a real business project. -->
+<testsuite name="example.OrderTimeoutTest" tests="2" failures="0" errors="0" skipped="0">
+  <testcase classname="example.OrderTimeoutTest" name="cancelsExpiredOrder" time="0.001"/>
+  <testcase classname="example.OrderTimeoutTest" name="keepsPaidOrder" time="0.001"/>
+</testsuite>

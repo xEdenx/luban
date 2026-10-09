@@ -1,0 +1,19 @@
+{
+  "schema_version": "0.1",
+  "change_id": "EXAMPLE-ORDER-001",
+  "risk_level": "L1",
+  "spec": "spec.md",
+  "report_sets": [{"module": ".", "kind": "surefire"}],
+  "criteria": [
+    {
+      "id": "AC-001",
+      "kind": "automated",
+      "tests": [{"module": ".", "kind": "surefire", "class": "example.OrderTimeoutTest", "name": "cancelsExpiredOrder"}]
+    },
+    {
+      "id": "AC-002",
+      "kind": "automated",
+      "tests": [{"module": ".", "kind": "surefire", "class": "example.OrderTimeoutTest", "name": "keepsPaidOrder"}]
+    }
+  ]
+}
