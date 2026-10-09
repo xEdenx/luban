@@ -9,6 +9,7 @@
 | generic 产物导入/引用 | unverified | unverified | 选择允许的文件入口，区分自动发现与手动引用 |
 | 辅助脚本与相对路径 | unverified | unverified | 正确工作区中运行无风险样例 |
 | 人工确认与恢复 | unverified | unverified | 未确认时暂停，恢复后继续正确版本 |
+| 团队 L0～L3 入口自动衔接 | unverified | unverified | 提供需求即生成 Spec；确认后自动推进工程步骤，而非输出命令清单 |
 | 调用原生 Workflow | unverified | unverified | 验证实际 launcher，不假设 Skills 支持即支持 headless CLI |
 | 执行项目已有测试 | unverified | unverified | 保存完整结果、退出码与报告 |
 | 分支/活跃 Spec 定位 | unverified | unverified | 切换变更后不读取旧记录为当前意图 |
@@ -22,6 +23,8 @@ Continue 上游文档提供 [Rules](https://docs.continue.dev/customize/deep-div
 Qoder 独立产品有 [App 概述](https://docs.qoder.com/qoder/overview) 与 [Skills 文档](https://docs.qoder.com/qoder/skills)。实际产品版本、导入格式和项目作用域仍待验证；不要使用 QoderWork 或 IDE/CLI 的结果替代。
 
 Spec Kit generic Skills 产物已在个人电脑生成；qodercli 源码表明其输出 `.qoder/skills` 并需要 CLI。这两个事实均不足以证明独立 App 集成通过。
+
+已通过原生 team-sdlc Extension 生成四级 Skills/命令文件并验证安装/移除，接入方法见[维护者说明](../skill-integration.md)。CLI Workflow + generic 实际不能派发，因此本版采用当前 Agent 会话衔接原生能力。真实客户端的导入布局、嵌套调用或手动读取有效原生指令方式均须验证。
 
 ## 结果分类
 

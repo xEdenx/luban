@@ -8,6 +8,8 @@ Spec Kit 原生 spec.md 已包含用户场景、验收场景和需求。沿用�
 
 本次只补三项：稳定 AC ID、引用 AC 的机器映射、读取 Maven XML 报告与记录实际执行的检查器。命令由开发者明确指定，通常使用项目已有的 `./mvnw verify` 或既有 profile；不修改 POM、不安装 JDK/Maven、不推断生产权限。
 
+现由 team-sdlc 入口中的 Agent 根据工程已有验证配置准备并执行命令；人工发起/确认工作流不意味着必须人工键入命令。检查器唯一实现随原生 Extension 安装，旧 scripts 路径仅作兼容入口。
+
 机器映射采用 acceptance.json，以便 Python 标准库直接读取。主设计早期 acceptance.yaml 是提案，当前实验实现只支持 JSON，不同时维护两套格式。这是工程格式选择，不增加业务审批步骤。
 
 ## 2. Spec 中的 AC 标识

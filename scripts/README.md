@@ -2,6 +2,8 @@
 
 仅依赖 Python 3.9+ 标准库与本机 Git。不会安装工具、修改 POM、判断人工审批或执行合并。契约与限制见 [验收契约](../docs/acceptance-contract.md)。
 
+开发者日常通过 [L0～L3 Skill 入口](../docs/developer-guide.md)由 Agent 执行检查，无需手动键入下面每条命令。本页用于维护与诊断。唯一检查器实现位于 [team-sdlc Extension](../extensions/team-sdlc/scripts/verify_maven_acceptance.py)，本目录脚本只是兼容启动器；业务工程可直接运行原生安装后的 `.specify/extensions/team-sdlc/scripts/verify_maven_acceptance.py`。
+
 ## 在真实工程使用
 
 先由人确认本轮 Spec/AC、风险等级、Maven 实际测试范围与报告布局。在业务工程中复制并调整 [映射样例](../examples/maven-acceptance/acceptance.json)，使用真实 XML 的 classname/name，不猜测测试名称。源码、测试、Spec 和映射应已提交；报告与本地结果目录应被忽略。
@@ -43,3 +45,5 @@ python3 -m unittest discover -s tests -v
 ```
 
 测试使用临时 Git 仓库和模拟命令生成 XML，覆盖正常、缺失、跳过、失败、旧报告及版本变化。它验证检查器逻辑，真实 Maven/Spring Boot 工程和两个客户端仍需现场验证。
+
+已安装 Spec Kit 1.1.2 时还会运行两个原生 Extension 生命周期测试（共 26 个测试）；未安装时这两个测试 skip，不应记录成通过。可通过 TEAM_SDLC_SPECIFY 指定批准的 CLI 路径，不自动安装依赖。

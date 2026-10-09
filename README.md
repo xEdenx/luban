@@ -8,7 +8,9 @@
 
 ## 开发同学从这里开始
 
-先读 [开发者使用说明：L0～L3 任务工作流](docs/developer-guide.md)。按任务等级查看逐步操作、确认角色、单/双 MR 路径、可复用 Agent 提示词和手动验收方式，无需先读完整设计。
+先读 [开发者使用说明：提交需求，让 Agent 推进 L0～L3 工作流](docs/developer-guide.md)。选择对应 Skill，提供需求文档或功能变化描述，Agent 起草 Spec/AC，在关键确认后继续规划、编码和测试；开发者核对准确性与最终功能。
+
+维护者按 [Spec Kit 与 Skill 接入说明](docs/skill-integration.md)完成一次接入。已实现原生 [team-sdlc Extension](extensions/team-sdlc/extension.yml)，可注册四个入口；两个真实客户端的行为仍待验证。
 
 日常速查：L0 Mini-Spec + 单 MR；L1 单 MR 先确认 Spec/AC；L2 单 MR 再确认技术方案；L3 Spec MR + 实现 MR。所有等级都保留实际验证与最终人工审核。
 
@@ -22,6 +24,7 @@
 - [ADR-0001](docs/adr/0001-native-first-flow-forward.md)：原生优先与生命周期决策。
 - [ADR-0002](docs/adr/0002-gitlab-manual-verification.md)：无自动 CI 触发时的第一版交付路径。
 - [ADR-0003](docs/adr/0003-maven-acceptance-prototype.md)：最小 Maven 验收原型的取舍与边界。
+- [ADR-0004](docs/adr/0004-native-task-entrypoints.md)：原生四级入口与会话衔接的实现选择。
 - [团队操作基线](docs/team-operating-profile.md)：已确认的审批路径、风险负责人及待批准细则。
 - [Maven 验收契约](docs/acceptance-contract.md)与[检查器操作说明](scripts/README.md)：最小映射、手动运行及限制。
 - [GitLab 手动验收路径](docs/gitlab-manual-verification.md)：无自动流水线时如何形成可复核证据。
@@ -35,10 +38,10 @@
 
 ## 已知团队环境
 
-团队使用自部署 GitLab，无法自动触发 CI。第一版采用“人工运行已有测试 → 生成绑定代码版本的证据 → GitLab Merge Request 人工审核”的路径。是否能手动触发流水线、是否有 Runner、能否强制审批/保护分支仍待核验。
+团队使用自部署 GitLab，无法自动触发 CI。第一版采用“人工发起工作流，Agent 在允许环境运行已有测试 → 生成绑定代码版本的证据 → GitLab Merge Request 人工审核”的路径。是否能手动触发流水线、是否有 Runner、能否强制审批/保护分支仍待核验。
 
 不以引入 Spec Kit 为由更换 Git 平台、测试框架或客户端；CI 保持为架构能力，当前落地强度据实记录。
 
 ## 仓库边界
 
-尚无团队 Preset、Extension 或 Bundle。已补一个必要的 AC 映射/报告检查原型；它不编排开发流程、不承担 CI 或审批服务。先验证再封装。work/ 与 .venv/ 为忽略的临时研究环境，不能当作正式分发物。
+已有 team-sdlc Extension 0.1.0 和 AC 映射/报告检查原型，复用原生能力并提供会话内衔接，不承担 CI 或审批服务。尚无团队 Preset、CLI Workflow 或 Bundle；先验证真实行为再标准化分发。work/ 与 .venv/ 为忽略的临时研究环境，不能当作正式分发物。

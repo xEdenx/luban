@@ -1,6 +1,6 @@
 # Agent-Native Development 团队转型方案
 
-版本：0.3 · 决策基线与实施设计 · 2026-10-10（Asia/Shanghai）
+版本：0.4 · 决策基线与实施设计 · 2026-10-10（Asia/Shanghai）
 配套文件：[Codex 实施任务接力说明](implementation-handoff.md)
 
 开发者日常操作见 [L0～L3 使用说明](developer-guide.md)；本文保留为单一主设计依据。
@@ -45,6 +45,7 @@
 | D-13 | L2 单 MR 分阶段，L3 双 MR | L2 确认技术方案；L3 Spec MR + 实现 MR，均绑定确切版本 |
 | D-14 | 人工确定风险等级与降级 | L0/L1 模块负责人，L2/L3 技术负责人；降级需相应负责人留痕 |
 | D-15 | 首版适配 Java 后端、Maven、Spring Boot | 复用实际测试框架，JUnit/插件版本与报告布局现场核验 |
+| D-16 | 开发者提交需求，由可调用入口推进流程 | 使用原生 Extension 注册 L0～L3 入口，Agent 衔接原生步骤，人在业务/技术确认及最终功能核对时参与 |
 
 不重新展开框架选型。若某项已决策方向在真实环境中无法成立，应提供具体证据、最小替代方案及影响，再请负责人裁决。
 
@@ -87,6 +88,12 @@
 具体执行见 [GitLab 手动验收路径](gitlab-manual-verification.md) 和 [工作电脑验证手册](work-mac-validation.md)。本节为当前落地约束，优先于下文尚未配置的自动 CI 目标。
 
 ## 3. 架构与原生能力复用边界
+
+### 当前入口实现
+
+用户已澄清目标交互：提供需求文档或功能变化描述后，Agent 自动生成符合原生结构的增量 Spec/AC，等待必要人工确认，再继续规划、编码、Converge 和实际测试；开发者不逐条调用原生命令。现有 [team-sdlc Extension 0.1.0](../extensions/team-sdlc/extension.yml)注册四个等级入口，共享会话执行约定并随包安装验收检查器。
+
+个人电脑已验证原生安装与注册，尚未验证两个客户端中的模型行为。Spec Kit 1.1.2 的 CLI Workflow command 步骤需要可派发的 Agent CLI，generic 实测无法派发；本版采用当前 Agent 会话衔接原生指令，保留将来使用原生 Workflow/overlay 的路径，不自建编排器。详见 [接入说明](skill-integration.md)和 [ADR-0004](adr/0004-native-task-entrypoints.md)。
 
 | 层 | 首选能力 | 团队补充的内容 |
 |---|---|---|

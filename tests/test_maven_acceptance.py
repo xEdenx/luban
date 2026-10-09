@@ -8,7 +8,7 @@ import tempfile
 import unittest
 
 
-SCRIPT = Path(__file__).resolve().parents[1] / "scripts" / "verify_maven_acceptance.py"
+SCRIPT = Path(__file__).resolve().parents[1] / "extensions" / "team-sdlc" / "scripts" / "verify_maven_acceptance.py"
 LOADER = importlib.util.spec_from_file_location("verifier", SCRIPT)
 V = importlib.util.module_from_spec(LOADER)
 LOADER.loader.exec_module(V)

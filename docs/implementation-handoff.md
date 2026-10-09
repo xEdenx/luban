@@ -1,6 +1,6 @@
 # Codex 实施任务接力说明
 
-版本：0.2 · 2026-10-10（Asia/Shanghai）
+版本：0.3 · 2026-10-10（Asia/Shanghai）
 主设计依据：[Agent-Native Development 团队转型方案](technical-design.md)
 
 面向开发同学的日常入口为 [L0～L3 使用说明](developer-guide.md)。本文件用于继续完善标准与环境验证。
@@ -14,6 +14,8 @@
 当前已建立独立标准仓库，并完成部分 T0 核验：在个人电脑隔离环境安装 Spec Kit 1.1.2，验证原生文件生成、官方组件安装和虚构 gate 行为。已另补 Maven AC-to-Test 0.1 实验检查器及虚构自检，真实 Java 工程尚未运行。实际进度以 docs/memory.md 为准。尚未提供业务试点工程、插件源码和版本，尚未完成真实客户端验证、业务工程门禁、团队 Bundle 或生产操作。没有已经建好的内部 Bundle。
 
 主文是设计依据，本文件是实施任务清单。优先修订这两份文档或目标仓库现有文档，不再生成一套内容重复的总方案。
+
+当前已实现 [team-sdlc Extension](../extensions/team-sdlc/extension.yml)四级入口。它以当前 Agent 会话衔接原生能力，尚未完成客户端行为验证。维护者按 [接入说明](skill-integration.md)安装，开发者只提供需求/增量描述、回答必要问题并确认内容，Agent 自动生成 Spec 并在确认后继续实施和验收。不要重新改成开发者逐条调用命令。
 
 ### 当前工作模式：个人电脑准备，受管工作电脑验证
 
@@ -81,7 +83,7 @@
 
 1. 在隔离环境初始化，检查生成文件和归属，复用官方模板；评估 Lean 与 Bug 组件是否适合实际任务。
 2. 起草并人工确认最小 Constitution，建立精简 AGENTS.md：活跃变更入口、历史 Spec 边界、验证命令、重新确认规则。
-3. 用一个 L0 局部任务验证 Mini-Spec 与 Review；用一个 L1 任务运行原生 Spec → Plan/Tasks → Implement → Converge → 测试流程。
+3. 用团队 L0 入口验证 Mini-Spec 与 Review；调用 L1 入口，提供需求文档/增量描述，由 Agent 实际完成原生 Spec → 人工确认 → Plan/Tasks → Implement → Converge → 测试流程，不要求人逐条调度。
 4. 人工补充真实业务规则并确认 AC；重要问题没有解决时保留暂停，不由 Agent 猜测为已批准。
 5. 在活跃变更中演示一次范围/AC 修订，重新确认并同步受影响的 Plan/Tasks；结束后冻结记录。
 
@@ -148,6 +150,7 @@
 
 1. Continue 自研插件先试现有 Rules/Prompts 或实际保留的机制，必要时用很薄的入口连接原生指令。
 2. Qoder 独立 App 按对应文档试导入/发现 Skills 与调用，验证工作区、路径、权限和恢复行为。
+   安装团队 Extension 后验证四入口及共享参考可访问，尤其验证确认前暂停、确认后自动推进、修订恢复与交付核对。CLI Workflow + generic 实测不能派发，不能当作 App 自动执行方案。
 3. 原生集成不适合时评估 generic 输出。记录真实生成入口，不假设文件出现就等于 App 可以调用。
 4. 每种客户端至少完成一个真实变更的起草、人工补充/确认、实现、测试与结果检查。
 5. 选一个变更在两种工具之间交接，依靠仓库产物定位范围和状态，检查分支切换后是否读取正确 Spec。
@@ -225,6 +228,9 @@ docs/technical-design.md 和 docs/implementation-handoff.md，基于已决策路
 以 GitHub Spec Kit 1.x 原生能力为基座，采用 Flow-forward 增量一次性 Spec、
 L0–L3、AC-to-Test、AGENTS.md + Skills + CI，试点后再用官方 Bundle 标准化。
 不要重新选框架，不要自建另一套 Spec 或 Agent 编排系统。
+已有 team-sdlc 原生 Extension 四入口：让开发者提供需求/增量描述，Agent 调用
+实际生效的原生能力生成 Spec/AC，关键确认后自动规划、实施和验收。
+读取 docs/skill-integration.md；不把逐条手动操作指南替代入口实现。
 团队是自部署 GitLab，无法自动触发 CI，首版手动运行现有验证并通过 MR 人工核验。
 首版工程为 Java 后端、Maven、Spring Boot；已有 acceptance.json 0.1 契约和检查器，
 先读 docs/acceptance-contract.md 与 scripts/README.md，不另起实现。

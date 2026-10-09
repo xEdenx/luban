@@ -1,0 +1,29 @@
+schema_version: "1.0"
+extension:
+  id: "team-sdlc"
+  name: "团队 L0–L3 需求交付入口"
+  version: "0.1.0"
+  author: "team-sdlc contributors"
+  description: "接收需求或增量描述，在人工确认点暂停，复用 Spec Kit 原生能力推进实现与验收。"
+requires:
+  speckit_version: "==1.1.2"
+provides:
+  commands:
+    - name: "speckit.team-sdlc.l0"
+      file: "commands/l0.md"
+      description: "L0 局部修复入口：从问题描述起草 Mini-Spec，确认后实现并验证；发现更高风险先上报。"
+    - name: "speckit.team-sdlc.l1"
+      file: "commands/l1.md"
+      description: "L1 常规需求入口：从需求文档或变更描述生成增量 Spec/AC，确认后规划、编码和验收。"
+    - name: "speckit.team-sdlc.l2"
+      file: "commands/l2.md"
+      description: "L2 跨模块需求入口：生成 Spec/AC 和技术方案，确认后实施并完成契约/集成验证。"
+    - name: "speckit.team-sdlc.l3"
+      file: "commands/l3.md"
+      description: "L3 高风险需求入口：准备 Spec MR，取得批准及合入基线后推进实现 MR 与专项验收。"
+  scripts:
+    - name: "team-sdlc-verify-maven"
+      file: "scripts/verify_maven_acceptance.py"
+      description: "读取 AC 映射与本次 Maven 默认 XML，记录版本绑定的验收证据。"
+      runtimes: ["python"]
+tags: ["team", "acceptance", "development"]

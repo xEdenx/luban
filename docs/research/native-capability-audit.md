@@ -31,6 +31,9 @@
 | qodercli | 源码确认 | 输出 `.qoder/skills`，声明需要 CLI；不能证明独立 App 能执行 |
 | Continue 自研插件 / Qoder App | unverified | 缺少实际版本和客户端条件 |
 | GitLab MR / 手动验收 | unverified | 当前只有设计和模板，没有内部权限或业务执行结果 |
+| team-sdlc Extension 0.1.0 | 安装/注册 pass | 原生安装注册四入口，共享参考与检查器随包复制；不是会话行为通过 |
+| generic Skills / 命令文件 | 安装/移除 pass | 两种布局均注册四入口，移除后核心文件和历史 Spec 保持不变 |
+| 官方 speckit CLI Workflow + generic | 预期受限 | 实际 specify 第一步 failed，无法 CLI 派发；本版用当前 Agent 会话衔接 |
 
 ## 3. 安装问题与结论
 
@@ -101,3 +104,13 @@ generic 生成的 taskstoissues 属于 GitHub Issue 同步方向，第一版内�
 测试仅使用虚构 AC/XML、模拟报告生成命令和临时 Git 仓库，验证映射、失败/跳过、报告缺失/过期、命令失败、干净工作区、提交变化和输出保护。没有运行真实 Maven 构建或 Spring Boot 测试，不表示两个客户端或受管电脑兼容。
 
 实际操作见 [检查器说明](../../scripts/README.md)，设计边界见 [验收契约](../acceptance-contract.md)。不新增第三方 Python 运行依赖。
+
+## 四级可调用入口验证
+
+2026-10-10：通过 `specify extension add <本地 team-sdlc 目录> --dev` 安装成功并注册四 Skill；`extension info team-sdlc --json` 返回四命令、一脚本。原生生命周期测试覆盖 generic Skills/命令文件两种布局、安装/移除、既有核心文件/Constitution/历史 Spec 保持不变，以及安装内检查器读取虚构报告。
+
+检查器实现迁入 Extension 后，26 个自检在 Python 3.14.8 全部通过，旧启动路径的报告读取示例也通过。新增两项是安装/资源测试，不是模型或客户端行为测试，未执行真实 Maven/Spring Boot 工程。
+
+额外以官方 speckit Workflow 输入虚构描述并选择 generic，实际返回 status=failed、current_step_id=specify、Cannot dispatch command；未调用模型或创建业务实现。来源见固定版本 [command step](https://github.com/github/spec-kit/blob/959e866caa3618bf3dc290d5dca33394365af9c6/src/specify_cli/workflows/step/command/__init__.py)。
+
+原生生成的 Skill 包含 compatibility，skill-creator 的 quick_validate 原样拒绝该字段。四命令源生成的最小 name/description/body 校验副本均通过，仅代表格式检查；没有修改原生受管产物。上游 generic renderer 还固定输出 metadata.author=github-spec-kit，不能据此认定本团队扩展为官方作品。详情见[接入说明](../skill-integration.md)。
