@@ -3,6 +3,8 @@
 版本：0.2 · 2026-10-10（Asia/Shanghai）
 主设计依据：[Agent-Native Development 团队转型方案](technical-design.md)
 
+面向开发同学的日常入口为 [L0～L3 使用说明](developer-guide.md)。本文件用于继续完善标准与环境验证。
+
 ## 1. 接力目标与当前状态
 
 将已确定的团队转型方向落到实际工程：**最大程度复用 GitHub Spec Kit 1.x 原生机制，采用 Flow-forward 增量一次性 Spec、L0–L3 风险分级、AC-to-Test 可执行验收、AGENTS.md + Skills + CI，并在试点验证后使用官方 Bundle 标准化。**

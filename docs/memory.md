@@ -5,6 +5,7 @@
 ## 已确认事实
 
 - 用户要求在 coding 目录创建独立文件夹并 git init；本仓库已初始化为 main，尚无远程仓库。
+- 用户要求先提交当前基线，再补开发同学能直接使用的 L0～L3 操作说明。基线已提交为 e67905e，指南及入口同步单独提交；尚未推送或发布。
 - 当前在个人电脑讨论、准备材料；未来 GitHub public repo 分发，受 MDM 管控的工作 MacBook 验证。
 - 团队使用自部署 GitLab，无法自动触发 CI；手动 Pipeline、Runner、版本/许可和审批权限未知。
 - 客户端为 Continue 自研 VS Code 插件与 Qoder 独立 Coding Agent App；实际版本和加载能力未知。
@@ -24,6 +25,7 @@
 - 发现 CLI 1.1.2 无 workflow validate 命令；默认 speckit Workflow 未包含 Converge 和真实测试，应显式执行或后续原生组合。
 - 补充 AC-to-Test JSON 0.1、虚构 Spec/映射/XML、Python 标准库检查器与操作说明；不接管原生开发流程。
 - 检查器 24 个自检在个人电脑 Python 3.14.8 与 Apple Python 3.9.6 均通过，覆盖正例、缺映射、跳过/失败、缺报告、旧报告、执行非零和被测版本变化等。全部使用虚构报告、模拟命令与临时 Git 仓库，未运行真实 Maven/Spring Boot 工程。
+- 新增 developer-guide.md：四级任务的具体操作、角色、原生能力入口、MR 衔接、确认留痕、Maven 手动验收、Reviewer 核对与变更接力。README 提供面向开发者的首要入口。本次仅补操作说明，无新增架构决策，不新增 ADR。
 
 ## 阶段状态
 

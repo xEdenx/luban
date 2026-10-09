@@ -3,6 +3,8 @@
 版本：0.3 · 决策基线与实施设计 · 2026-10-10（Asia/Shanghai）
 配套文件：[Codex 实施任务接力说明](implementation-handoff.md)
 
+开发者日常操作见 [L0～L3 使用说明](developer-guide.md)；本文保留为单一主设计依据。
+
 > **以 Spec Kit 原生能力为基础，选择 Flow-forward Spec 作为生命周期策略，保留四级任务模型，以 AC-to-Test 的可执行验收为核心扩展，最后通过官方 Bundle 机制实现团队标准化推广。**
 
 本文承接《团队AI开发方案推荐》中的最终用户决策，作为后续工程落地的主设计依据。本仓库已完成部分 T0 核验与 T2 实验原型；实际状态以 [项目记忆](memory.md) 和 [原生能力核验](research/native-capability-audit.md) 为准，尚未修改团队插件或启用业务工程门禁。文中的示例、建议阈值和实施路径不表示已上线。
