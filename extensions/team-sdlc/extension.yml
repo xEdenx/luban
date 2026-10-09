@@ -2,13 +2,16 @@ schema_version: "1.0"
 extension:
   id: "team-sdlc"
   name: "团队 L0–L3 需求交付入口"
-  version: "0.1.0"
+  version: "0.1.1"
   author: "team-sdlc contributors"
   description: "接收需求或增量描述，在人工确认点暂停，复用 Spec Kit 原生能力推进实现与验收。"
 requires:
   speckit_version: "==1.1.2"
 provides:
   commands:
+    - name: "speckit.team-sdlc.start"
+      file: "commands/start.md"
+      description: "统一需求入口：提供需求或增量描述，Agent 结合工程评估风险，生成 Spec/AC，确认后自动实施和验证。"
     - name: "speckit.team-sdlc.l0"
       file: "commands/l0.md"
       description: "L0 局部修复入口：从问题描述起草 Mini-Spec，确认后实现并验证；发现更高风险先上报。"

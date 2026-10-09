@@ -24,7 +24,7 @@ Qoder 独立产品有 [App 概述](https://docs.qoder.com/qoder/overview) 与 [S
 
 Spec Kit generic Skills 产物已在个人电脑生成；qodercli 源码表明其输出 `.qoder/skills` 并需要 CLI。这两个事实均不足以证明独立 App 集成通过。
 
-已通过原生 team-sdlc Extension 生成四级 Skills/命令文件并验证安装/移除，接入方法见[维护者说明](../skill-integration.md)。CLI Workflow + generic 实际不能派发，因此本版采用当前 Agent 会话衔接原生能力。真实客户端的导入布局、嵌套调用或手动读取有效原生指令方式均须验证。
+已通过原生 team-sdlc Extension 生成统一入口和四级兼容 Skills/命令文件并验证安装/移除，接入方法见[维护者说明](../skill-integration.md)。CLI Workflow + generic 实际不能派发，因此本版采用当前 Agent 会话衔接原生能力。真实客户端的导入布局、嵌套调用或手动读取有效原生指令方式均须验证。
 
 ## 结果分类
 

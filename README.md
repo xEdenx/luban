@@ -8,9 +8,9 @@
 
 ## 开发同学从这里开始
 
-先读 [开发者使用说明：提交需求，让 Agent 推进 L0～L3 工作流](docs/developer-guide.md)。选择对应 Skill，提供需求文档或功能变化描述，Agent 起草 Spec/AC，在关键确认后继续规划、编码和测试；开发者核对准确性与最终功能。
+先读 [开发者使用说明：提交需求，让 Agent 推进 L0～L3 工作流](docs/developer-guide.md)。调用统一 Skill `speckit-team-sdlc-start`，提供需求文档或功能变化描述，无需预先评级；Agent 先依据工程评估风险，再起草相应 Spec/AC，在关键确认后继续规划、编码和测试；开发者核对准确性与最终功能。
 
-维护者按 [Spec Kit 与 Skill 接入说明](docs/skill-integration.md)完成一次接入。已实现原生 [team-sdlc Extension](extensions/team-sdlc/extension.yml)，可注册四个入口；两个真实客户端的行为仍待验证。
+维护者按 [Spec Kit 与 Skill 接入说明](docs/skill-integration.md)完成一次接入。已实现原生 [team-sdlc Extension](extensions/team-sdlc/extension.yml)，可注册一个默认统一入口和四个兼容入口；所有入口都必须评估风险；两个真实客户端的行为仍待验证。
 
 日常速查：L0 Mini-Spec + 单 MR；L1 单 MR 先确认 Spec/AC；L2 单 MR 再确认技术方案；L3 Spec MR + 实现 MR。所有等级都保留实际验证与最终人工审核。
 
@@ -44,4 +44,4 @@
 
 ## 仓库边界
 
-已有 team-sdlc Extension 0.1.0 和 AC 映射/报告检查原型，复用原生能力并提供会话内衔接，不承担 CI 或审批服务。尚无团队 Preset、CLI Workflow 或 Bundle；先验证真实行为再标准化分发。work/ 与 .venv/ 为忽略的临时研究环境，不能当作正式分发物。
+已有 team-sdlc Extension 0.1.1 和 AC 映射/报告检查原型，复用原生能力并提供会话内衔接，不承担 CI 或审批服务。尚无团队 Preset、CLI Workflow 或 Bundle；先验证真实行为再标准化分发。work/ 与 .venv/ 为忽略的临时研究环境，不能当作正式分发物。

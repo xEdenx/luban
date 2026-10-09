@@ -31,8 +31,8 @@
 | qodercli | 源码确认 | 输出 `.qoder/skills`，声明需要 CLI；不能证明独立 App 能执行 |
 | Continue 自研插件 / Qoder App | unverified | 缺少实际版本和客户端条件 |
 | GitLab MR / 手动验收 | unverified | 当前只有设计和模板，没有内部权限或业务执行结果 |
-| team-sdlc Extension 0.1.0 | 安装/注册 pass | 原生安装注册四入口，共享参考与检查器随包复制；不是会话行为通过 |
-| generic Skills / 命令文件 | 安装/移除 pass | 两种布局均注册四入口，移除后核心文件和历史 Spec 保持不变 |
+| team-sdlc Extension 0.1.1 | 安装/注册 pass | 原生安装注册统一 start 与四级兼容入口，共享参考与检查器随包复制；不是会话行为通过 |
+| generic Skills / 命令文件 | 安装/移除 pass | 两种布局均注册五入口，移除后核心文件和历史 Spec 保持不变 |
 | 官方 speckit CLI Workflow + generic | 预期受限 | 实际 specify 第一步 failed，无法 CLI 派发；本版用当前 Agent 会话衔接 |
 
 ## 3. 安装问题与结论
@@ -107,10 +107,18 @@ generic 生成的 taskstoissues 属于 GitHub Issue 同步方向，第一版内�
 
 ## 四级可调用入口验证
 
-2026-10-10：通过 `specify extension add <本地 team-sdlc 目录> --dev` 安装成功并注册四 Skill；`extension info team-sdlc --json` 返回四命令、一脚本。原生生命周期测试覆盖 generic Skills/命令文件两种布局、安装/移除、既有核心文件/Constitution/历史 Spec 保持不变，以及安装内检查器读取虚构报告。
+2026-10-10，0.1.0 首轮：通过 `specify extension add <本地 team-sdlc 目录> --dev` 安装成功并注册四 Skill；`extension info team-sdlc --json` 返回四命令、一脚本。原生生命周期测试覆盖 generic Skills/命令文件两种布局、安装/移除、既有核心文件/Constitution/历史 Spec 保持不变，以及安装内检查器读取虚构报告。
 
 检查器实现迁入 Extension 后，26 个自检在 Python 3.14.8 全部通过，旧启动路径的报告读取示例也通过。新增两项是安装/资源测试，不是模型或客户端行为测试，未执行真实 Maven/Spring Boot 工程。
 
 额外以官方 speckit Workflow 输入虚构描述并选择 generic，实际返回 status=failed、current_step_id=specify、Cannot dispatch command；未调用模型或创建业务实现。来源见固定版本 [command step](https://github.com/github/spec-kit/blob/959e866caa3618bf3dc290d5dca33394365af9c6/src/specify_cli/workflows/step/command/__init__.py)。
 
 原生生成的 Skill 包含 compatibility，skill-creator 的 quick_validate 原样拒绝该字段。四命令源生成的最小 name/description/body 校验副本均通过，仅代表格式检查；没有修改原生受管产物。上游 generic renderer 还固定输出 metadata.author=github-spec-kit，不能据此认定本团队扩展为官方作品。详情见[接入说明](../skill-integration.md)。
+
+## 统一入口与强制风险评估规则补充
+
+2026-10-10：用户明确不能完全依靠开发者自评。team-sdlc 0.1.1 增加 start 统一入口，不要求预选等级；五个入口共用工程证据、规则下限、负责人确认、Plan/实施/diff 复评和最终 Review 复核约定。沿用原生能力和已有 Spec/Mini-Spec 记录，无新评级服务。
+
+修改后重跑两个原生生命周期测试，通过：generic Skills 与命令文件均安装五入口，资源与检查器随包完整，移除保护核心文件/历史 Spec，安装内脚本仍可读取虚构报告。检查器实现未变，本次未重复原有 24 个测试；此前通过记录继续作为既有证据。
+
+风险识别、拒绝低级入口绕过、升降级确认和复评均是新 Skill 行为规则，尚未通过实际模型/客户端验证。对应新增 V2-09～V2-14；不能把安装测试称为评级准确或软件强制门禁。start 命令源的最小 Skill 校验副本通过严格格式校验；上游原样生成产物的 compatibility 字段问题仍保持前述限制。

@@ -193,7 +193,7 @@
   "note": "Observed package versions, not a cross-platform or hash-locked installation file. No personal paths or machine identifiers.",
   "local_components": {
     "team-sdlc": {
-      "version": "0.1.0",
+      "version": "0.1.1",
       "kind": "extension",
       "tested_specify_version": "1.1.2",
       "tested_layouts": [

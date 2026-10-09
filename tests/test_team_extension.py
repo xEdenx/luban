@@ -39,11 +39,11 @@ class ExtensionLifecycleTests(unittest.TestCase):
                 fingerprints = {p: hashlib.sha256(p.read_bytes()).hexdigest() for p in existing if p.is_file()}
                 self.run_cli(repo, "extension", "add", str(EXTENSION), "--dev")
                 info = json.loads(self.run_cli(repo, "extension", "info", "team-sdlc", "--json"))
-                self.assertEqual(len(info["commands"]), 4)
+                self.assertEqual(len(info["commands"]), 5)
                 self.assertEqual(len(info["scripts"]), 1)
-                for level in range(4):
-                    entry = (repo / ".agent-entry" / ("speckit-team-sdlc-l" + str(level)) / "SKILL.md"
-                             if skills else repo / ".agent-entry" / ("speckit.team-sdlc.l" + str(level) + ".md"))
+                for mode in ("start", "l0", "l1", "l2", "l3"):
+                    entry = (repo / ".agent-entry" / ("speckit-team-sdlc-" + mode) / "SKILL.md"
+                             if skills else repo / ".agent-entry" / ("speckit.team-sdlc." + mode + ".md"))
                     self.assertTrue(entry.is_file(), entry)
                 installed = repo / ".specify" / "extensions" / "team-sdlc"
                 for rel in ("references/flow.md", "references/acceptance.md", "scripts/verify_maven_acceptance.py"):

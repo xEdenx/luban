@@ -10,9 +10,9 @@
 
 ## 决策
 
-使用 team-sdlc Extension 注册 L0～L3 四个命令。原生 Integration 负责注册/渲染，当前 Agent 会话读取统一约定并调用实际生效的原生 Specify/Clarify/Plan/Tasks/Analyze/Implement/Converge。不能嵌套调用时可读取已安装有效指令并执行，记录为 manual-reference；不复制原生流程实现。
+使用 team-sdlc Extension 注册 L0～L3 四个命令；0.1.1 补充默认 start 统一入口，开发者无需预先评级。任何入口先依据工程证据与规则下限建议等级，负责人确认、Plan/实施新发现/最终 diff 复评、Reviewer 复核；四级入口仅作建议，不能绕过。原生 Integration 负责注册/渲染，当前 Agent 会话读取统一约定并调用实际生效的原生 Specify/Clarify/Plan/Tasks/Analyze/Implement/Converge。不能嵌套调用时可读取已安装有效指令并执行，记录为 manual-reference；不复制原生流程实现。
 
-四个入口复用一份执行参考，在业务/技术确认处暂停，已有有效确认后自动继续工程步骤。未确认规则、风险变化、环境受限或关键方案变化才请求必要输入。L1/L2 单 MR、L3 双 MR 和审批权限保持不变。
+统一入口和四个兼容入口复用一份执行参考，在业务/技术确认处暂停，已有有效确认后自动继续工程步骤。未确认规则、风险变化、环境受限或关键方案变化才请求必要输入。L1/L2 单 MR、L3 双 MR 和审批权限保持不变。
 
 Maven 检查器唯一实现移入 Extension，标准仓库旧路径保留兼容启动器。安装后共享规则和执行脚本留在业务工程 .specify/extensions/team-sdlc/；不要求工作电脑访问个人路径。
 
